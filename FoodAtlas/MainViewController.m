@@ -257,6 +257,29 @@ static NSString *kMapServiceURL = @"http://services.arcgisonline.com/ArcGIS/rest
    [self presentViewController:self.tocViewController animated:YES completion:NULL];
 }
 
+- (void)showStores:(panelViewController *)controller
+{
+     NSLog(@"showStores called by delegate");
+    //[self.mapView addMapLayer:dynamicLyr4 withName:@"SNAP Retailers"];
+     self.mapViewLevelLayerInfo = [[LayerInfo alloc] initWithLayer:nil layerID:-2 name:@"Map" target:nil];
+    
+    for (LayerInfo *layerInfo in self.mapViewLevelLayerInfo.children)
+    {
+        //bool indicating whether the layer is present or not.
+        BOOL layerPresent = NO;
+        
+        //iterate through the map layers to check the layer has been removed since previous display.
+        for (AGSLayer *layer in self.mapView.mapLayers) {
+            if([layer.name isEqualToString:layerInfo.layerName])
+            {
+                //layer is present
+                layerPresent = YES;
+                break;
+            }
+        }
+    }
+}
+
 - (void) startAutoPan:(panelViewController *)controller
 {
     NSLog(@"startAutoPan called by delegate");
