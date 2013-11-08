@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <ArcGIS/ArcGIS.h>
 #import "panelViewController.h"
+#import "LayerInfo.h"
 
 @interface MainViewController : UIViewController <AGSMapViewLayerDelegate, UISearchBarDelegate, AGSLocatorDelegate, AGSCalloutDelegate, AGSMapViewTouchDelegate, AGSIdentifyTaskDelegate, AGSRouteTaskDelegate, ChildViewControllerDelegate>
 {
@@ -40,6 +41,7 @@
 @property (nonatomic, strong) IBOutlet AGSMapView *mapView;
 //@property (nonatomic, strong) IBOutlet UIButton* infoButton;
 @property (nonatomic, strong) UIPopoverController *popOverController;
+@property (nonatomic, strong) LayerInfo *mapViewLevelLayerInfo;
 
 // find address feature
 @property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
@@ -91,6 +93,8 @@
 - (IBAction)presentTableOfContents:(id)sender;
 
 - (void)showLayers:(panelViewController *)controller; // called by panelViewController
+
+- (void)showStores:(panelViewController *)controller; // called by panelViewController
 
 - (void)locationRequested:(panelViewController *)controller;
 
