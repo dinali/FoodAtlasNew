@@ -17,6 +17,7 @@
 @implementation panelViewController
 
 @synthesize delegate = _delegate;
+@synthesize toggleStoresBtn = _toggleStoresBtn;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +37,13 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+// tell mainVC to hide the retail stores layer
+- (IBAction)showStores:(id)sender {
+    NSLog(@"telling mainVC to display SNAP stores");
+    [self.delegate  showStores:self];
+    
 }
 
 - (IBAction)showLayers:(id)sender {
